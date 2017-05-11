@@ -36,7 +36,7 @@ def create_data(table, event):
 
 def get_data(table, event):
     from boto3.dynamodb.conditions import Key, Attr
-    return table.query(KeyConditionExpression=Key('customer_id').eq(event['body']['customer_id']))
+    return table.query(KeyConditionExpression=Key('customer_id').eq(event['query']['customer_id']))
 
 
 def lambda_handler(event, context):
