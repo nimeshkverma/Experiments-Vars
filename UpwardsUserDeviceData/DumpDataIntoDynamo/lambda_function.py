@@ -50,4 +50,4 @@ def lambda_handler(event, context):
     if table and operation in operations:
         return respond(None, operations[operation](table, event))
     else:
-    return respond(ValueError('Unsupported method: "{operation}" or data_type: {data_type}'.format(operation=operation, data_type=data_type)))
+        return respond(ValueError('Unsupported method: "{operation}" or data_type: {data_type}'.format(operation=operation, data_type=data_type)))
