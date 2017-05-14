@@ -34,8 +34,6 @@ class Database(object):
         cursor.execute(query)
         self.connection.commit()
         return cursor
-        # rows = cursor.fetchall()
-        # return rows
 
     def close_connection(self):
         self.connection.close()

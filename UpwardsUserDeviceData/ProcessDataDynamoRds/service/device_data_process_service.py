@@ -8,7 +8,7 @@ class ProcessedDeviceData(object):
     def __init__(self, raw_data):
         self.raw_data = raw_data
         self.customer_id = self.get_customer_id()
-        self.call_status_mapping = {
+        self.status_mapping = {
             'INCOMING': 'Incomming',
             'OUTGOING': 'Outgoing',
         }
@@ -49,9 +49,9 @@ class ProcessedDeviceData(object):
                     VALUES 
                     """
         for attribute in self.attributes:
-            for status, call_data in self.aggregate_data[attribute].iteritems():
-                for day_type, day_call_data in call_data.iteritems():
-                    for day_hour_type, value in day_call_data.iteritems():
+            for status, device_data in self.aggregate_data[attribute].iteritems():
+                for day_type, day_device_data in device_data.iteritems():
+                    for day_hour_type, value in day_device_data.iteritems():
                         sql_query += """({customer_id}, '{data_type}', '{status}', '{attribute}', {value}, '{weekday_type}', '{day_hour_type}', ( select now()::timestamp with time zone at time zone 'Asia/Kolkata'), ( select now()::timestamp with time zone at time zone 'Asia/Kolkata'), TRUE) ,""".format(
                             customer_id=self.customer_id,
                             data_type=self.data_type,
@@ -62,8 +62,8 @@ class ProcessedDeviceData(object):
                             day_hour_type=day_hour_type,
                         )
         for attribute in self.ratio_types:
-            for day_type, day_call_data in self.aggregate_data[attribute].iteritems():
-                for day_hour_type, value in day_call_data.iteritems():
+            for day_type, day_device_data in self.aggregate_data[attribute].iteritems():
+                for day_hour_type, value in day_device_data.iteritems():
                     sql_query += """({customer_id}, '{data_type}', '{status}', '{attribute}', {value}, '{weekday_type}', '{day_hour_type}', ( select now()::timestamp with time zone at time zone 'Asia/Kolkata'), ( select now()::timestamp with time zone at time zone 'Asia/Kolkata'), TRUE)
                                 ,""".format(
                         customer_id=self.customer_id,
@@ -83,7 +83,7 @@ class ProcessedCallData(ProcessedDeviceData):
     def __init__(self, raw_data):
         self.raw_data = raw_data
         self.customer_id = self.get_customer_id()
-        self.call_status_mapping = {
+        self.status_mapping = {
             'INCOMING': 'Incomming',
             'OUTGOING': 'Outgoing',
         }
@@ -199,18 +199,18 @@ class ProcessedCallData(ProcessedDeviceData):
     def process_raw_data(self):
         for call_data in self.raw_data.get('data', {}).get('M', {}).get('data', {}).get('L', []):
             call_status = call_data.get('M', {}).get('Call Type', {}).get('S')
-            if call_status in self.call_status_mapping.keys():
+            if call_status in self.status_mapping.keys():
                 call_date = call_data['M']['Call Date']['S']
                 day_type = self.get_day_type(call_date)
                 hour_type = self.get_hour_type(call_date)
                 call_duration = int(call_data['M']['Call Duration']['S'])
                 self.aggregate_data['Count'][
-                    self.call_status_mapping[call_status]][day_type]['All'] += 1
-                self.aggregate_data['Count'][self.call_status_mapping[
+                    self.status_mapping[call_status]][day_type]['All'] += 1
+                self.aggregate_data['Count'][self.status_mapping[
                     call_status]][day_type][hour_type] += 1
                 self.aggregate_data['Duration'][
-                    self.call_status_mapping[call_status]][day_type]['All'] += call_duration
-                self.aggregate_data['Duration'][self.call_status_mapping[
+                    self.status_mapping[call_status]][day_type]['All'] += call_duration
+                self.aggregate_data['Duration'][self.status_mapping[
                     call_status]][day_type][hour_type] += call_duration
 
     def process_aggregate_data(self):
@@ -231,9 +231,9 @@ class ProcessedSMSData(ProcessedDeviceData):
     def __init__(self, raw_data):
         self.raw_data = raw_data
         self.customer_id = self.get_customer_id()
-        self.call_status_mapping = {
-            'INCOMING': 'Incomming',
-            'OUTGOING': 'Outgoing',
+        self.status_mapping = {
+            '1': 'Incomming',
+            '2': 'Outgoing',
         }
         self.aggregate_data = {
             'Count': {
@@ -294,18 +294,17 @@ class ProcessedSMSData(ProcessedDeviceData):
         self.process_aggregate_data()
         self.sql_query = self.get_sql_query()
 
-        def process_raw_data(self):
-            for call_data in self.raw_data.get('data', {}).get('M', {}).get('data', {}).get('L', []):
-                call_status = call_data.get('M', {}).get(
-                    'Call Type', {}).get('S')
-                if call_status in self.call_status_mapping.keys():
-                    call_date = call_data['M']['Call Date']['S']
-                    day_type = self.get_day_type(call_date)
-                    hour_type = self.get_hour_type(call_date)
-                    self.aggregate_data['Count'][
-                        self.call_status_mapping[call_status]][day_type]['All'] += 1
-                    self.aggregate_data['Count'][self.call_status_mapping[
-                        call_status]][day_type][hour_type] += 1
+    def process_raw_data(self):
+        for sms_data in self.raw_data.get('data', {}).get('M', {}).get('data', {}).get('L', []):
+            sms_status = sms_data.get('M', {}).get('Type', {}).get('S')
+            if sms_status in self.status_mapping.keys():
+                sms_date = sms_data['M']['Date']['S']
+                day_type = self.get_day_type(sms_date)
+                hour_type = self.get_hour_type(sms_date)
+                self.aggregate_data['Count'][
+                    self.status_mapping[sms_status]][day_type]['All'] += 1
+                self.aggregate_data['Count'][
+                    self.status_mapping[sms_status]][day_type][hour_type] += 1
 
     def process_aggregate_data(self):
         for ratio_type in self.ratio_types:
