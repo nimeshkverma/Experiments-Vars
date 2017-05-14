@@ -10,7 +10,7 @@ print('Loading function')
 def respond(err, res=None):
     return {
         'statusCode': '400' if err else '200',
-        'body': err.message if err else json.dumps(res),
+        'body': err.message if err else res,
         'headers': {
             'Content-Type': 'application/json',
         },
@@ -29,8 +29,11 @@ def get_table(event):
 
 
 def create_data(table, event):
-    input_data = event['body']
-    input_data.pop('data_type')
+    input_data = {
+        'customer_id': str(event['body']['customer_id']),
+        'created_at': int(event['body']['created_at']),
+        'data': event['body']['data']
+    }
     return table.put_item(Item=input_data)
 
 
