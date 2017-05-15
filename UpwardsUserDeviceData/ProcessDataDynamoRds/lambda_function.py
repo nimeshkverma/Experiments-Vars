@@ -21,7 +21,7 @@ def lambda_handler(event, context):
     db = Database()
     logger.info("Received event: " + json.dumps(event, indent=2))
     for record in event['Records']:
-        if record.get('dynamodb', {}).get('NewImage'):
+        if record.get('dynamodb', {}).get('NewImage') and record.get('eventName') == 'INSERT':
             data_class = get_data_class(record)
             if data_class:
                 sql_query = data_class(
