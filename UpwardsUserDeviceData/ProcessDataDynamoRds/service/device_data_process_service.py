@@ -9,7 +9,7 @@ class ProcessedDeviceData(object):
         self.raw_data = raw_data
         self.customer_id = self.get_customer_id()
         self.status_mapping = {
-            'INCOMING': 'Incomming',
+            'INCOMING': 'Incoming',
             'OUTGOING': 'Outgoing',
         }
 
@@ -68,7 +68,7 @@ class ProcessedDeviceData(object):
                                 ,""".format(
                         customer_id=self.customer_id,
                         data_type=self.data_type,
-                        status='null',
+                        status='Outgoing/Incoming',
                         attribute=attribute,
                         value=value,
                         weekday_type=day_type,
@@ -84,12 +84,12 @@ class ProcessedCallData(ProcessedDeviceData):
         self.raw_data = raw_data
         self.customer_id = self.get_customer_id()
         self.status_mapping = {
-            'INCOMING': 'Incomming',
+            'INCOMING': 'Incoming',
             'OUTGOING': 'Outgoing',
         }
         self.aggregate_data = {
             'Count': {
-                'Incomming': {
+                'Incoming': {
                     'Weekday': {
                         'Morning': 0.0,
                         'Office Hours': 0.0,
@@ -98,6 +98,13 @@ class ProcessedCallData(ProcessedDeviceData):
                         'All': 0.0
                     },
                     'Weekend': {
+                        'Morning': 0.0,
+                        'Office Hours': 0.0,
+                        'Evening': 0.0,
+                        'Late Night': 0.0,
+                        'All': 0.0
+                    },
+                    'Week': {
                         'Morning': 0.0,
                         'Office Hours': 0.0,
                         'Evening': 0.0,
@@ -114,6 +121,13 @@ class ProcessedCallData(ProcessedDeviceData):
                         'All': 0.0
                     },
                     'Weekend': {
+                        'Morning': 0.0,
+                        'Office Hours': 0.0,
+                        'Evening': 0.0,
+                        'Late Night': 0.0,
+                        'All': 0.0
+                    },
+                    'Week': {
                         'Morning': 0.0,
                         'Office Hours': 0.0,
                         'Evening': 0.0,
@@ -123,7 +137,7 @@ class ProcessedCallData(ProcessedDeviceData):
                 },
             },
             'Duration': {
-                'Incomming': {
+                'Incoming': {
                     'Weekday': {
                         'Morning': 0.0,
                         'Office Hours': 0.0,
@@ -132,6 +146,13 @@ class ProcessedCallData(ProcessedDeviceData):
                         'All': 0.0
                     },
                     'Weekend': {
+                        'Morning': 0.0,
+                        'Office Hours': 0.0,
+                        'Evening': 0.0,
+                        'Late Night': 0.0,
+                        'All': 0.0
+                    },
+                    'Week': {
                         'Morning': 0.0,
                         'Office Hours': 0.0,
                         'Evening': 0.0,
@@ -148,6 +169,13 @@ class ProcessedCallData(ProcessedDeviceData):
                         'All': 0.0
                     },
                     'Weekend': {
+                        'Morning': 0.0,
+                        'Office Hours': 0.0,
+                        'Evening': 0.0,
+                        'Late Night': 0.0,
+                        'All': 0.0
+                    },
+                    'Week': {
                         'Morning': 0.0,
                         'Office Hours': 0.0,
                         'Evening': 0.0,
@@ -171,6 +199,13 @@ class ProcessedCallData(ProcessedDeviceData):
                     'Late Night': 0.0,
                     'All': 0.0
                 },
+                'Week': {
+                    'Morning': 0.0,
+                    'Office Hours': 0.0,
+                    'Evening': 0.0,
+                    'Late Night': 0.0,
+                    'All': 0.0
+                },
             },
             'Duration Ratio': {
                 'Weekday': {
@@ -181,6 +216,13 @@ class ProcessedCallData(ProcessedDeviceData):
                     'All': 0.0
                 },
                 'Weekend': {
+                    'Morning': 0.0,
+                    'Office Hours': 0.0,
+                    'Evening': 0.0,
+                    'Late Night': 0.0,
+                    'All': 0.0
+                },
+                'Week': {
                     'Morning': 0.0,
                     'Office Hours': 0.0,
                     'Evening': 0.0,
@@ -208,22 +250,26 @@ class ProcessedCallData(ProcessedDeviceData):
                     self.status_mapping[call_status]][day_type]['All'] += 1
                 self.aggregate_data['Count'][self.status_mapping[
                     call_status]][day_type][hour_type] += 1
+                self.aggregate_data['Count'][self.status_mapping[
+                    call_status]]['Week'][hour_type] += 1
                 self.aggregate_data['Duration'][
                     self.status_mapping[call_status]][day_type]['All'] += call_duration
                 self.aggregate_data['Duration'][self.status_mapping[
                     call_status]][day_type][hour_type] += call_duration
+                self.aggregate_data['Duration'][self.status_mapping[
+                    call_status]]['Week'][hour_type] += call_duration
 
     def process_aggregate_data(self):
         for ratio_type in self.ratio_types:
             type_key = 'Count' if ratio_type == 'Count Ratio' else 'Duration'
             for day_type_key, day_type_value in self.aggregate_data[ratio_type].iteritems():
                 for hour_type_key in day_type_value.keys():
-                    incomming = self.aggregate_data[type_key][
-                        'Incomming'][day_type_key][hour_type_key]
+                    incoming = self.aggregate_data[type_key][
+                        'Incoming'][day_type_key][hour_type_key]
                     outgoing = self.aggregate_data[type_key][
                         'Outgoing'][day_type_key][hour_type_key]
                     self.aggregate_data[ratio_type][day_type_key][hour_type_key] = round(
-                        incomming * 100.0 / outgoing, 4) if outgoing else 999999.9990
+                        outgoing * 100.0 / incoming, 4) if incoming else 999999.9990
 
 
 class ProcessedSMSData(ProcessedDeviceData):
@@ -232,12 +278,12 @@ class ProcessedSMSData(ProcessedDeviceData):
         self.raw_data = raw_data
         self.customer_id = self.get_customer_id()
         self.status_mapping = {
-            '1': 'Incomming',
+            '1': 'Incoming',
             '2': 'Outgoing',
         }
         self.aggregate_data = {
             'Count': {
-                'Incomming': {
+                'Incoming': {
                     'Weekday': {
                         'Morning': 0.0,
                         'Office Hours': 0.0,
@@ -246,6 +292,13 @@ class ProcessedSMSData(ProcessedDeviceData):
                         'All': 0.0
                     },
                     'Weekend': {
+                        'Morning': 0.0,
+                        'Office Hours': 0.0,
+                        'Evening': 0.0,
+                        'Late Night': 0.0,
+                        'All': 0.0
+                    },
+                    'Week': {
                         'Morning': 0.0,
                         'Office Hours': 0.0,
                         'Evening': 0.0,
@@ -268,6 +321,13 @@ class ProcessedSMSData(ProcessedDeviceData):
                         'Late Night': 0.0,
                         'All': 0.0
                     },
+                    'Week': {
+                        'Morning': 0.0,
+                        'Office Hours': 0.0,
+                        'Evening': 0.0,
+                        'Late Night': 0.0,
+                        'All': 0.0
+                    },
                 },
             },
             'Count Ratio': {
@@ -279,6 +339,13 @@ class ProcessedSMSData(ProcessedDeviceData):
                     'All': 0.0
                 },
                 'Weekend': {
+                    'Morning': 0.0,
+                    'Office Hours': 0.0,
+                    'Evening': 0.0,
+                    'Late Night': 0.0,
+                    'All': 0.0
+                },
+                'Week': {
                     'Morning': 0.0,
                     'Office Hours': 0.0,
                     'Evening': 0.0,
@@ -305,15 +372,17 @@ class ProcessedSMSData(ProcessedDeviceData):
                     self.status_mapping[sms_status]][day_type]['All'] += 1
                 self.aggregate_data['Count'][
                     self.status_mapping[sms_status]][day_type][hour_type] += 1
+                self.aggregate_data['Count'][
+                    self.status_mapping[sms_status]]['Week'][hour_type] += 1
 
     def process_aggregate_data(self):
         for ratio_type in self.ratio_types:
             type_key = 'Count'
             for day_type_key, day_type_value in self.aggregate_data[ratio_type].iteritems():
                 for hour_type_key in day_type_value.keys():
-                    incomming = self.aggregate_data[type_key][
-                        'Incomming'][day_type_key][hour_type_key]
+                    incoming = self.aggregate_data[type_key][
+                        'Incoming'][day_type_key][hour_type_key]
                     outgoing = self.aggregate_data[type_key][
                         'Outgoing'][day_type_key][hour_type_key]
                     self.aggregate_data[ratio_type][day_type_key][hour_type_key] = round(
-                        incomming * 100.0 / outgoing, 4) if outgoing else 999999.9990
+                        outgoing * 100.0 / incoming, 4) if incoming else 999999.9990

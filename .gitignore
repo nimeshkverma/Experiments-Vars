@@ -11,3 +11,5 @@ settings.py
 db.sqlite3
 migrations
 lambda
+psycopg2
+wheel
