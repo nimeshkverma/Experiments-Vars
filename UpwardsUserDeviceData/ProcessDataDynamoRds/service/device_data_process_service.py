@@ -269,7 +269,7 @@ class ProcessedCallData(ProcessedDeviceData):
                     outgoing = self.aggregate_data[type_key][
                         'Outgoing'][day_type_key][hour_type_key]
                     self.aggregate_data[ratio_type][day_type_key][hour_type_key] = round(
-                        outgoing * 100.0 / incoming, 4) if incoming else 999999.9990
+                        outgoing * 100.0 / incoming, 4) if incoming else 9999.0
 
 
 class ProcessedSMSData(ProcessedDeviceData):
