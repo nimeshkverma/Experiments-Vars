@@ -10,7 +10,8 @@
     "aadhaar_details",
     "bank",
     "personal_contact",
-    "documents"
+    "documents",
+    "review"
   ],
   "screen_wise_field_names": {
     "loan_product": [
