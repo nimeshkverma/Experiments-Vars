@@ -1,0 +1,32 @@
+{
+  "name": "Type: String | Description: Name of the Screen Event. Selected from predefined values.. Eg: '12'",
+  "data": {
+    "customer_id": "Type: String | Description: Customer Id of the User. Eg: '12'",
+    "from_screen": "Type: String | Description: Name of the previous Screen where user was. Selected from predefined values. Eg: '12'",
+    "session_timestamp": [
+      {
+        "start_time": "Type: Int | Description: Start timestamp of the user session on the screen in EPOC. Eg: '1495618900'",
+        "end_time": "Type: Int | Description: End timestamp of the user session on the screen in EPOC. Eg: '1495618949'"
+      },
+      {
+        "start_time": "Type: Int | Description: Start timestamp of the user session on the screen in EPOC. Eg: '1495618900'",
+        "end_time": "Type: Int | Description: End timestamp of the user session on the screen in EPOC. Eg: '1495618949'"
+      },
+      {
+        "start_time": "Type: Int | Description: Start timestamp of the user session on the screen in EPOC. Eg: '1495618900'",
+        "end_time": "Type: Int | Description: End timestamp of the user session on the screen in EPOC. Eg: '1495618949'"
+      }
+    ],
+    "field_events": [
+      {
+        "name": "Type: String | Description: Name of the Field Event. Selected from predefined values. Eg: 'loan_purpose'",
+        "data": {
+          "action": "Type: String | Description: Action taken by the user. Selected from predefined values. Eg: 'selection'",
+          "mode": "Type: String | Description: 'create' or 'update' depending upon the user mode. Eg: 'create'",
+          "value": "Type: Int/String/Decimal | Description: The action value. Eg: 'Mobile'",
+          "timestamp": "Type: Int | Description: The timestamp of the user input in the field on the screen in EPOC. Eg: '1495618949'"
+        }
+      }
+    ]
+  }
+}
