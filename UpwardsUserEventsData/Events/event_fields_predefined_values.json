@@ -100,5 +100,15 @@
     "documents":[
         "document_type"
     ]
-  }
+  },
+  "modes":[
+    "create",
+    "update"
+  ],
+  "actions":[
+    "selection",
+    "keypad_input",
+    "autofill",
+    "upload"
+  ]
 }

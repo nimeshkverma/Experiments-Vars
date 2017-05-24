@@ -1,0 +1,73 @@
+{
+  "name": "loan_product",
+  "data": {
+    "customer_id": "101",
+    "from_screen": "signup",
+    "session_timestamp": [
+      {
+        "start_time": 1495618900,
+        "end_time": 1495619000
+      },
+      {
+        "start_time": 1495718900,
+        "end_time": 1495719000
+      }
+    ],
+    "field_events": [
+      {
+        "name": "loan_purpose",
+        "data": {
+          "action": "selection",
+          "mode": "create",
+          "value": "Mobile",
+          "timestamp": 1495618910
+        }
+      },
+      {
+        "name": "loan_amount",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": 10000,
+          "timestamp": 1495618920
+        }
+      },
+      {
+        "name": "existing_emi",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": 0,
+          "timestamp": 1495618930
+        }
+      },
+      {
+        "name": "loan_tenure",
+        "data": {
+          "action": "selection",
+          "mode": "create",
+          "value": 24,
+          "timestamp": 1495618940
+        }
+      },
+      {
+        "name": "loan_purpose",
+        "data": {
+          "action": "selection",
+          "mode": "create",
+          "value": "Mobile",
+          "timestamp": 1495618950
+        }
+      },
+      {
+        "name": "loan_emi",
+        "data": {
+          "action": "autofill",
+          "mode": "create",
+          "value": 1180,
+          "timestamp": 1495618960
+        }
+      }
+    ]
+  }
+}
