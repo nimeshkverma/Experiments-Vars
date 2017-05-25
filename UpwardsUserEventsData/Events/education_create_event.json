@@ -1,0 +1,51 @@
+{
+  "name": "education",
+  "data": {
+    "customer_id": "10",
+    "from_screen": "profession",
+    "session_timestamp": [
+      {
+        "start_time": 1495719701,
+        "end_time": 1495619750
+      }
+    ],
+    "field_events": [
+      {
+        "name": "college",
+        "data": {
+          "action": "selection",
+          "mode": "create",
+          "value": "IIT Delhi",
+          "timestamp": 1495719705
+        }
+      },
+      {
+        "name": "qualification",
+        "data": {
+          "action": "selection",
+          "mode": "create",
+          "value": "12th pass",
+          "timestamp": 1495719710
+        }
+      },
+      {
+        "name": "completion_year",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": 1999,
+          "timestamp": 1495719715
+        }
+      },
+      {
+        "name": "qualification_type",
+        "data": {
+          "action": "selection",
+          "mode": "create",
+          "value": "highest",
+          "timestamp": 1495719720
+        }
+      }
+    ]
+  }
+}

@@ -11,7 +11,8 @@
     "bank",
     "personal_contact",
     "documents",
-    "review"
+    "eligibility_review",
+    "kyc_review"
   ],
   "screen_wise_field_names": {
     "loan_product": [

@@ -1,0 +1,172 @@
+{
+  "name": "loan_product",
+  "data": {
+    "customer_id": "10",
+    "from_screen": "signup",
+    "session_timestamp": [
+      {
+        "start_time": 1495618900,
+        "end_time": 1495619000
+      },
+      {
+        "start_time": 1495718900,
+        "end_time": 1495719000
+      }
+    ],
+    "field_events": [
+      {
+        "name": "loan_purpose",
+        "data": {
+          "action": "selection",
+          "mode": "create",
+          "value": "Mobile",
+          "timestamp": 1495618910
+        }
+      },
+      {
+        "name": "loan_amount",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": 10000,
+          "timestamp": 1495618920
+        }
+      },
+      {
+        "name": "loan_amount",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": 12000,
+          "timestamp": 1495718920
+        }
+      },
+      {
+        "name": "existing_emi",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": 2000,
+          "timestamp": 1495618930
+        }
+      },
+      {
+        "name": "existing_emi",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": 25000,
+          "timestamp": 1495718930
+        }
+      },
+      {
+        "name": "loan_tenure",
+        "data": {
+          "action": "selection",
+          "mode": "create",
+          "value": 3,
+          "timestamp": 1495618940
+        }
+      },
+      {
+        "name": "loan_tenure",
+        "data": {
+          "action": "selection",
+          "mode": "create",
+          "value": 6,
+          "timestamp": 1495618950
+        }
+      },
+      {
+        "name": "loan_tenure",
+        "data": {
+          "action": "selection",
+          "mode": "create",
+          "value": 9,
+          "timestamp": 1495618960
+        }
+      },
+      {
+        "name": "loan_tenure",
+        "data": {
+          "action": "selection",
+          "mode": "create",
+          "value": 12,
+          "timestamp": 1495618970
+        }
+      },
+      {
+        "name": "loan_tenure",
+        "data": {
+          "action": "selection",
+          "mode": "create",
+          "value": 20,
+          "timestamp": 1495618980
+        }
+      },
+      {
+        "name": "loan_tenure",
+        "data": {
+          "action": "selection",
+          "mode": "create",
+          "value": 24,
+          "timestamp": 1495618990
+        }
+      },
+      {
+        "name": "loan_emi",
+        "data": {
+          "action": "autofill",
+          "mode": "create",
+          "value": 4500,
+          "timestamp": 1495618940
+        }
+      },
+      {
+        "name": "loan_emi",
+        "data": {
+          "action": "autofill",
+          "mode": "create",
+          "value": 2500,
+          "timestamp": 1495618950
+        }
+      },
+      {
+        "name": "loan_emi",
+        "data": {
+          "action": "autofill",
+          "mode": "create",
+          "value": 1800,
+          "timestamp": 1495618960
+        }
+      },
+      {
+        "name": "loan_emi",
+        "data": {
+          "action": "autofill",
+          "mode": "create",
+          "value": 1200,
+          "timestamp": 1495618970
+        }
+      },
+      {
+        "name": "loan_emi",
+        "data": {
+          "action": "autofill",
+          "mode": "create",
+          "value": 700,
+          "timestamp": 1495618980
+        }
+      },
+      {
+        "name": "loan_emi",
+        "data": {
+          "action": "autofill",
+          "mode": "create",
+          "value": 600,
+          "timestamp": 1495618990
+        }
+      }
+    ]
+  }
+}

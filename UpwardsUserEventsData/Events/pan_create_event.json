@@ -1,0 +1,37 @@
+{
+  "name": "pan",
+  "data": {
+    "customer_id": "10",
+    "from_screen": "loan_product",
+    "session_timestamp": [
+      {
+        "start_time": 1495719000,
+        "end_time": 1495719500
+      },
+      {
+        "start_time": 1495719510,
+        "end_time": 1495719600
+      }
+    ],
+    "field_events": [
+      {
+        "name": "pan",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "QWERTY1234Q",
+          "timestamp": 1495719200
+        }
+      },
+      {
+        "name": "pan",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "QWERTY5678Q",
+          "timestamp": 1495719560
+        }
+      }
+    ]
+  }
+}
