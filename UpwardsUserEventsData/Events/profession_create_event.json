@@ -20,6 +20,15 @@
         }
       },
       {
+        "name": "company",
+        "data": {
+          "action": "selection",
+          "mode": "create",
+          "value": "Housing.com",
+          "timestamp": 1495719606
+        }
+      },
+      {
         "name": "organisation_type",
         "data": {
           "action": "selection",
@@ -53,6 +62,15 @@
           "mode": "create",
           "value": "nime@gqj.com",
           "timestamp": 1495719625
+        }
+      },
+      {
+        "name": "email",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "nimesssss@gqj.com",
+          "timestamp": 1495719626
         }
       },
       {
@@ -107,6 +125,15 @@
           "mode": "create",
           "value": 20000,
           "timestamp": 1495719655
+        }
+      },
+      {
+        "name": "salary",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": 21000,
+          "timestamp": 1495719656
         }
       },
       {

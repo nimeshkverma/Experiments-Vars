@@ -24,6 +24,15 @@
         }
       },
       {
+        "name": "loan_purpose",
+        "data": {
+          "action": "selection",
+          "mode": "create",
+          "value": "Personal",
+          "timestamp": 1495618911
+        }
+      },
+      {
         "name": "loan_amount",
         "data": {
           "action": "keypad_input",
@@ -37,8 +46,17 @@
         "data": {
           "action": "keypad_input",
           "mode": "create",
+          "value": 11000,
+          "timestamp": 1495618921
+        }
+      },
+      {
+        "name": "loan_amount",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
           "value": 12000,
-          "timestamp": 1495718920
+          "timestamp": 1495718922
         }
       },
       {

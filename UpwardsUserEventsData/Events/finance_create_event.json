@@ -47,6 +47,15 @@
         }
       },
       {
+        "name": "marital_status",
+        "data": {
+          "action": "selection",
+          "mode": "create",
+          "value": "Single",
+          "timestamp": 1495719771
+        }
+      },
+      {
         "name": "dependents",
         "data": {
           "action": "keypad_input",

@@ -38,6 +38,15 @@
         }
       },
       {
+        "name": "completion_year",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": 1989,
+          "timestamp": 1495719716
+        }
+      },
+      {
         "name": "qualification_type",
         "data": {
           "action": "selection",

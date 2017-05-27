@@ -20,6 +20,15 @@
         }
       },
       {
+        "name": "first_name",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "Nimssesh",
+          "timestamp": 1495620011
+        }
+      },
+      {
         "name": "last_name",
         "data": {
           "action": "keypad_input",
@@ -51,8 +60,17 @@
         "data": {
           "action": "keypad_input",
           "mode": "create",
-          "value": "Nimesh",
+          "value": "N",
           "timestamp": 1495620030
+        }
+      },
+      {
+        "name": "mother_first_name",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "Nu",
+          "timestamp": 1495620031
         }
       },
       {
@@ -74,6 +92,15 @@
         }
       },
       {
+        "name": "dob",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "1989-01-11",
+          "timestamp": 1495620041
+        }
+      },
+      {
         "name": "gender",
         "data": {
           "action": "selection",
@@ -89,6 +116,15 @@
           "mode": "create",
           "value": "9911999911",
           "timestamp": 1495620050
+        }
+      },
+      {
+        "name": "mobile_no",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "9911996911",
+          "timestamp": 1495620051
         }
       },
       {

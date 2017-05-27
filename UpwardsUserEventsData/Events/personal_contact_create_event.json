@@ -20,12 +20,30 @@
         }
       },
       {
+        "name": "alternate_email_id",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "nimehssss@ds.com",
+          "timestamp": 1495620146
+        }
+      },
+      {
         "name": "alternate_mob_no",
         "data": {
           "action": "keypad_input",
           "mode": "create",
           "value": "9991111111",
           "timestamp": 1495620150
+        }
+      },
+      {
+        "name": "alternate_mob_no",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "9991111131",
+          "timestamp": 1495620151
         }
       }
     ]
