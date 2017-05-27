@@ -1,0 +1,87 @@
+{
+  "name": "bank",
+  "data": {
+    "customer_id": "10",
+    "from_screen": "aadhaar_details",
+    "session_timestamp": [
+      {
+        "start_time": 1495620110,
+        "end_time": 1495620140
+      }
+    ],
+    "field_events": [
+      {
+        "name": "bank_name",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "ICICI",
+          "timestamp": 1495620111
+        }
+      },
+      {
+        "name": "account_number",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "1111111111",
+          "timestamp": 1495620115
+        }
+      },
+      {
+        "name": "account_holder_name",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "Nimesh",
+          "timestamp": 1495620120
+        }
+      },
+      {
+        "name": "account_holder_name",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "Nimesh Verma",
+          "timestamp": 1495620121
+        }
+      },
+      {
+        "name": "branch_detail",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "Something",
+          "timestamp": 1495620125
+        }
+      },
+      {
+        "name": "ifsc",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "ICIC0000024",
+          "timestamp": 1495620130
+        }
+      },
+      {
+        "name": "upi_mobile_number",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "9911111199",
+          "timestamp": 1495620135
+        }
+      },
+      {
+        "name": "upi_mobile_number",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "9921111199",
+          "timestamp": 1495620136
+        }
+      }
+    ]
+  }
+}

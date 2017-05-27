@@ -1,0 +1,222 @@
+{
+  "name": "aadhaar_details",
+  "data": {
+    "customer_id": "10",
+    "from_screen": "aadhaar",
+    "session_timestamp": [
+      {
+        "start_time": 1495620010,
+        "end_time": 1495620100
+      }
+    ],
+    "field_events": [
+      {
+        "name": "first_name",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "Nimesh",
+          "timestamp": 1495620010
+        }
+      },
+      {
+        "name": "first_name",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "Nimssesh",
+          "timestamp": 1495620011
+        }
+      },
+      {
+        "name": "last_name",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "Verma ",
+          "timestamp": 1495620015
+        }
+      },
+      {
+        "name": "father_first_name",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "P",
+          "timestamp": 1495620020
+        }
+      },
+      {
+        "name": "father_last_name",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "Verma",
+          "timestamp": 1495620025
+        }
+      },
+      {
+        "name": "mother_first_name",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "N",
+          "timestamp": 1495620030
+        }
+      },
+      {
+        "name": "mother_first_name",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "Nu",
+          "timestamp": 1495620031
+        }
+      },
+      {
+        "name": "mother_last_name",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "Verma",
+          "timestamp": 1495620035
+        }
+      },
+      {
+        "name": "dob",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "1989-08-11",
+          "timestamp": 1495620040
+        }
+      },
+      {
+        "name": "dob",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "1989-01-11",
+          "timestamp": 1495620041
+        }
+      },
+      {
+        "name": "gender",
+        "data": {
+          "action": "selection",
+          "mode": "create",
+          "value": "Male",
+          "timestamp": 1495620045
+        }
+      },
+      {
+        "name": "mobile_no",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "9911999911",
+          "timestamp": 1495620050
+        }
+      },
+      {
+        "name": "mobile_no",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "9911996911",
+          "timestamp": 1495620051
+        }
+      },
+      {
+        "name": "permanent_address_line1",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "103 A Panch",
+          "timestamp": 1495620055
+        }
+      },
+      {
+        "name": "permanent_address_line2",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "Powai Plaza",
+          "timestamp": 1495620060
+        }
+      },
+      {
+        "name": "permanent_city",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "Mumbai",
+          "timestamp": 1495620065
+        }
+      },
+      {
+        "name": "permanent_state",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "Maharastra",
+          "timestamp": 1495620070
+        }
+      },
+      {
+        "name": "permanent_pincode",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "400072",
+          "timestamp": 1495620070
+        }
+      },
+      {
+        "name": "current_address_line1",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "103 A Panch",
+          "timestamp": 1495620075
+        }
+      },
+      {
+        "name": "current_address_line2",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "Powai Plaza",
+          "timestamp": 1495620080
+        }
+      },
+      {
+        "name": "current_city",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "Mumbai",
+          "timestamp": 1495620085
+        }
+      },
+      {
+        "name": "current_state",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "Maharastra",
+          "timestamp": 1495620090
+        }
+      },
+      {
+        "name": "current_pincode",
+        "data": {
+          "action": "keypad_input",
+          "mode": "create",
+          "value": "400072",
+          "timestamp": 1495620095
+        }
+      }
+    ]
+  }
+}
