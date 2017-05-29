@@ -40,7 +40,7 @@ class ProcessedEventsData(object):
                     'time_spent': 0
                 }
             },
-            'documents': {
+            'document': {
                 'create': {
                     'sessions': 0,
                     'time_spent': 0
@@ -154,7 +154,7 @@ class ProcessedEventsData(object):
                 'create': {},
                 'update': {}
             },
-            'documents': {
+            'document': {
                 'create': {},
                 'update': {}
             },
@@ -226,7 +226,7 @@ class ProcessedEventsData(object):
                     "end_value": {},
                 }
             },
-            'documents': {
+            'document': {
                 'create': {
                     "start_value": {},
                     "end_value": {},
@@ -347,7 +347,7 @@ class ProcessedEventsData(object):
 
     def __process_raw_data(self):
         for screen_event_data in self.__raw_data['data']['L']:
-            screen = screen_event_data['M']['data']['M']['from_screen']['S']
+            screen = screen_event_data['M']['name']['S']
             mode = self.__get_mode(screen_event_data)
             for session_timestamp in screen_event_data['M']['data']['M']['session_timestamp']['L']:
                 self.__screen_data[screen][mode]['sessions'] += 1
