@@ -24,6 +24,7 @@ def get_table(event):
         'call': dynamodb.Table('UpwardsUserCallData'),
         'sms': dynamodb.Table('UpwardsUserSMSData'),
         'internet': dynamodb.Table('UpwardsUserInternetData'),
+        'contact': dynamodb.Table('UpwardsUserContactData'),
     }
     return table_mapping.get(data_type)
 
