@@ -1,7 +1,7 @@
 import json
 import logging
 from service.database_service import Database
-from service.device_data_process_service import ProcessedCallData, ProcessedSMSData
+from service.device_data_process_service import ProcessedCallData, ProcessedSMSData, ProcessedContactData
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
@@ -13,6 +13,8 @@ def get_data_class(record):
         return ProcessedCallData
     elif 'UpwardsUserSMSData' in record.get('eventSourceARN'):
         return ProcessedSMSData
+    elif 'UpwardsUserContactData' in record.get('eventSourceARN'):
+        return ProcessedContactData
     else:
         return None
 
