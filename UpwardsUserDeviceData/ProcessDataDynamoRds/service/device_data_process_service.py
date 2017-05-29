@@ -386,3 +386,38 @@ class ProcessedSMSData(ProcessedDeviceData):
                         'Outgoing'][day_type_key][hour_type_key]
                     self.aggregate_data[ratio_type][day_type_key][hour_type_key] = round(
                         outgoing * 100.0 / incoming, 4) if incoming else 9999
+
+
+class ProcessedContactData(object):
+
+    def __init__(self, raw_data):
+        self.raw_data = raw_data
+        self.customer_id = self.get_customer_id()
+        self.aggregate_data = {
+            'Number of Contacts': 0
+        }
+        self.process_raw_data()
+        self.sql_query = self.get_sql_query()
+
+    def get_customer_id(self):
+        return self.raw_data['customer_id']['S']
+
+    def process_raw_data(self):
+        contact_data = self.raw_data.get('data', {}).get(
+            'M', {}).get('data', {}).get('L', [])
+        self.aggregate_data['Number of Contacts'] += len(contact_data)
+
+    def get_sql_query(self):
+        sql_query = """
+                INSERT INTO analytics_contactdata 
+                (customer_id, data_type, value, created_at, updated_at, is_active) 
+                    VALUES 
+                    """
+        for data_type, value in self.aggregate_data.iteritems():
+            sql_query += """({customer_id}, '{data_type}', {value}, ( select now()::timestamp with time zone at time zone 'Asia/Kolkata'), ( select now()::timestamp with time zone at time zone 'Asia/Kolkata'), TRUE) ,""".format(
+                customer_id=self.customer_id,
+                data_type=data_type,
+                value=value,
+            )
+        sql_query = sql_query[:-1] + ' ;'
+        return sql_query
