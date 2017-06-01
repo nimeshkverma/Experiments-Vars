@@ -425,5 +425,10 @@ class ProcessedContactData(object):
                 data_type=data_type,
                 value=value,
             )
-        sql_query = sql_query[:-1] + ' ;'
+        sql_query = sql_query[:-1]
+        sql_query += """ON CONFLICT (customer_id, data_type) 
+                        DO UPDATE SET created_at = excluded.created_at, 
+                        updated_at = excluded.updated_at,
+                        is_active = excluded.is_active,
+                        value = excluded.value;"""
         return sql_query
