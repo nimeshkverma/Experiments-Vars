@@ -375,7 +375,14 @@ class ProcessedEventsData(object):
                     screen=screen,
                     mode=mode,
                 )
-        sql_query = sql_query[:-1] + ' ;'
+        sql_query = sql_query[:-1]
+        sql_query += """ON CONFLICT (customer_id, screen, mode) 
+                        DO UPDATE SET 
+                        created_at = excluded.created_at, 
+                        updated_at = excluded.updated_at,
+                        is_active = excluded.is_active,
+                        sessions = excluded.sessions,
+                        time_spent = excluded.time_spent;"""
         return sql_query
 
     def __get_deviation(self, a, b):
@@ -398,7 +405,14 @@ class ProcessedEventsData(object):
                         screen=screen,
                         mode=mode,
                     )
-        sql_query = sql_query[:-1] + ' ;'
+        sql_query = sql_query[:-1]
+        sql_query += """ON CONFLICT (customer_id, screen, field, mode) 
+                        DO UPDATE SET 
+                        created_at = excluded.created_at, 
+                        updated_at = excluded.updated_at,
+                        is_active = excluded.is_active,
+                        edits = excluded.edits,
+                        deviation = excluded.deviation;"""
         return sql_query
 
     def __get_sql_queries(self):
