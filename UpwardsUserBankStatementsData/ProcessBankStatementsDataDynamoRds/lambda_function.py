@@ -2,7 +2,6 @@ import json
 import logging
 from service.database_service import Database
 from service.bank_statement_data_process_service import ProcessedBankStatementData
-from events import e
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
@@ -24,6 +23,3 @@ def lambda_handler(event, context):
             logger.info('Bank Statement Data record not found for Dynamodb')
     db.close_connection()
     return 'Successfully processed {} events records.'.format(len(event['Records']))
-
-
-lambda_handler(e, 1)
