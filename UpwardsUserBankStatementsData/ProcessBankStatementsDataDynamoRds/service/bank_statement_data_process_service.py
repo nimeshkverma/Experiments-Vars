@@ -96,15 +96,16 @@ class ProcessedBankStatementData(object):
                     'month': MONTH[month],
                     'year': year,
                     'days_in_period': number_of_days,
-                    'attribute_name': 'moving_average_balance',
+                    'attribute_name': 'average_days_in_month_balance_above_emi',
                     'attribute_type': 'count',
                     'attribute_value': int(cumalative_days / month_number)
                 }
                 insights_sql_query_data.append(emi_above_days_data_dict)
         for time_period_key, time_period_value in self.month_wise_data.iteritems():
+            month = time_period_key % 100
             analysed_days_data_dict = {
-                'month': time_period[index] % 100,
-                'year': time_period[index] / 100,
+                'month': MONTH[month],
+                'year': time_period_key / 100,
                 'days_in_period': time_period_value['total_days'],
                 'attribute_name': 'days_analysed',
                 'attribute_type': 'count',
