@@ -11,7 +11,7 @@
     ],
     "field_events": [
       {
-        "name": "document_type",
+        "name": "document_type_1",
         "data": {
           "action": "autofill",
           "mode": "create",
@@ -20,7 +20,7 @@
         }
       },
       {
-        "name": "document_type",
+        "name": "document_type_2",
         "data": {
           "action": "autofill",
           "mode": "create",
@@ -29,7 +29,7 @@
         }
       },
       {
-        "name": "document_type",
+        "name": "document_type_3",
         "data": {
           "action": "autofill",
           "mode": "create",
@@ -38,7 +38,7 @@
         }
       },
       {
-        "name": "document_type",
+        "name": "document_type_4",
         "data": {
           "action": "autofill",
           "mode": "create",
@@ -47,7 +47,7 @@
         }
       },
       {
-        "name": "document_type",
+        "name": "document_type_5",
         "data": {
           "action": "autofill",
           "mode": "create",
@@ -56,11 +56,20 @@
         }
       },
       {
-        "name": "document_type",
+        "name": "document_type_6",
         "data": {
           "action": "autofill",
           "mode": "create",
           "value": 6,
+          "timestamp": 1495620190
+        }
+      },
+      {
+        "name": "document_type_7",
+        "data": {
+          "action": "autofill",
+          "mode": "create",
+          "value": 7,
           "timestamp": 1495620190
         }
       }

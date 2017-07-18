@@ -40,7 +40,7 @@ class ProcessedEventsData(object):
                     'time_spent': 0
                 }
             },
-            'documents': {
+            'document': {
                 'create': {
                     'sessions': 0,
                     'time_spent': 0
@@ -154,7 +154,7 @@ class ProcessedEventsData(object):
                 'create': {},
                 'update': {}
             },
-            'documents': {
+            'document': {
                 'create': {},
                 'update': {}
             },
@@ -226,7 +226,7 @@ class ProcessedEventsData(object):
                     "end_value": {},
                 }
             },
-            'documents': {
+            'document': {
                 'create': {
                     "start_value": {},
                     "end_value": {},
@@ -347,7 +347,7 @@ class ProcessedEventsData(object):
 
     def __process_raw_data(self):
         for screen_event_data in self.__raw_data['data']['L']:
-            screen = screen_event_data['M']['data']['M']['from_screen']['S']
+            screen = screen_event_data['M']['name']['S']
             mode = self.__get_mode(screen_event_data)
             for session_timestamp in screen_event_data['M']['data']['M']['session_timestamp']['L']:
                 self.__screen_data[screen][mode]['sessions'] += 1
@@ -375,7 +375,14 @@ class ProcessedEventsData(object):
                     screen=screen,
                     mode=mode,
                 )
-        sql_query = sql_query[:-1] + ' ;'
+        sql_query = sql_query[:-1]
+        sql_query += """ON CONFLICT (customer_id, screen, mode) 
+                        DO UPDATE SET 
+                        created_at = excluded.created_at, 
+                        updated_at = excluded.updated_at,
+                        is_active = excluded.is_active,
+                        sessions = excluded.sessions,
+                        time_spent = excluded.time_spent;"""
         return sql_query
 
     def __get_deviation(self, a, b):
@@ -398,7 +405,14 @@ class ProcessedEventsData(object):
                         screen=screen,
                         mode=mode,
                     )
-        sql_query = sql_query[:-1] + ' ;'
+        sql_query = sql_query[:-1]
+        sql_query += """ON CONFLICT (customer_id, screen, field, mode) 
+                        DO UPDATE SET 
+                        created_at = excluded.created_at, 
+                        updated_at = excluded.updated_at,
+                        is_active = excluded.is_active,
+                        edits = excluded.edits,
+                        deviation = excluded.deviation;"""
         return sql_query
 
     def __get_sql_queries(self):
