@@ -56,7 +56,7 @@ class ProcessedBankStatementData(object):
                 }
             get_month_wise_data[key]['total_balance'] += balance
             get_month_wise_data[key]['total_days'] += 1
-            if balance >= self.emi:
+            if balance >= float(self.emi):
                 get_month_wise_data[key]['balance_above_emi_days'] += 1
         return get_month_wise_data
 
@@ -69,19 +69,19 @@ class ProcessedBankStatementData(object):
         if time_period and self.month_wise_data[time_period[-1]]['total_days'] < 25:
             time_period = time_period[:-1]
 
-        for start_index in xrange(len(time_period)):
+        for current_outer_index in xrange(len(time_period)):
             cumalative_balance = 0
             cumalative_days = 0
             number_of_days = 0
             month_number = 0
-            for index in xrange(start_index, len(time_period)):
+            for index in xrange(current_outer_index, -1, -1):
                 cumalative_balance += self.month_wise_data[
                     time_period[index]]['total_balance']
                 cumalative_days += self.month_wise_data[
                     time_period[index]]['balance_above_emi_days']
                 number_of_days += 30
-                year = time_period[index] / 100
-                month = time_period[index] % 100
+                year = time_period[current_outer_index] / 100
+                month = time_period[current_outer_index] % 100
                 month_number += 1
                 balance_data_dict = {
                     'month': MONTH[month],
